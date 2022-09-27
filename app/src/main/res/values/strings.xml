@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">DataBinding</string>
+
+    <string-array name="first_names">
+        <item>"kanha"</item>
+        <item>"Kuldeep"</item>
+        <item>"Mohit"</item>
+        <item>"Laddu"</item>
+        <item>"Rajat"</item>
+    </string-array>
+
+    <string-array name="second_names">
+        <item>"Tomar"</item>
+        <item>"Patidar"</item>
+        <item>"Dhanger"</item>
+        <item>"Tomar"</item>
+        <item>"Patidar"</item>
+    </string-array>
+
 </resources>
