@@ -17,6 +17,19 @@
         android:padding="20dp"
         tools:context=".MainActivity">
 
+        <!--This will show the first_name and if you enter a new name
+            it is automatically updated in first name field because it
+            is saving that data in first_name variable and first_name variable
+            is also accessed by textview
+         -->
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@={viewmodel.first_name}" />
+
         <TextView
             android:id="@+id/first_name_txt"
             android:layout_width="wrap_content"
