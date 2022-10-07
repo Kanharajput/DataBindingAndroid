@@ -35,7 +35,7 @@
             android:id="@+id/next_name_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onNext"
+            android:onClick="@{()->viewmodel.nextName()}"
             android:text="Next" />
 
     </LinearLayout>

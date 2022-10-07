@@ -1,5 +1,11 @@
 package com.example.databinding;
 
+/* One way binding in which data flow in only one side
+* like here data is flowing only from viewmodel to ui not ui to viewmodel
+* this is know as one way binding.
+* Two way binding is the flow of data on both side
+* */
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
@@ -24,21 +30,13 @@ public class MainActivity extends AppCompatActivity {
 
         // get the viewModel
         mainViewModel = new ViewModelProvider(this, new MainViewModelFactory(this))
-                .get(MainViewModel.class);
+                                                                                        .get(MainViewModel.class);
 
         // set the viewmodel
         binding.setViewmodel(mainViewModel);
-    }
-
-    // change the data in viewmodel
-    // layout will automatically get the data
-    // because data is bind with layout
-    public void onNext(View view) {
-        mainViewModel.nextName();
-        // it is not automatically updating the new name in layout
-        // while it is updated in the variable which is holding the name
-        // so refreshing will make the layout again put the variable values
-        // but this time it will be the new value/name.
-        recreate();
+        // liveData is lifecycle aware so here we are setting this activity as owner.
+        // and let the bindind know about this so it will automatically update the new data
+        // like we do with the help of observer
+        binding.setLifecycleOwner(this);
     }
 }

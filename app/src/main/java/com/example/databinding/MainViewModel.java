@@ -3,6 +3,7 @@ package com.example.databinding;
 import android.content.Context;
 import android.media.MediaCodec;
 
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
@@ -10,12 +11,11 @@ import java.util.Arrays;
 
 public class MainViewModel extends ViewModel {
 
-    Context context;
-    String[] FirstNamesStringArray;
-    String[] SecondNamesStringArray;
-
-    public String first_name;
-    public String second_name;
+    private Context context;
+    private String[] FirstNamesStringArray;
+    private String[] SecondNamesStringArray;
+    public MutableLiveData<String> first_name;
+    public MutableLiveData<String> second_name;
 
     // to integrate in names list
     int count = 1;
@@ -33,15 +33,15 @@ public class MainViewModel extends ViewModel {
         SecondNamesStringArray = context.getResources().getStringArray(R.array.second_names);
 
         // get the first name out of the String array
-        first_name = FirstNamesStringArray[0];
-        second_name = SecondNamesStringArray[0];
+        first_name = new MutableLiveData<>(FirstNamesStringArray[0]);
+        second_name = new MutableLiveData<>(SecondNamesStringArray[0]);
         total_names = FirstNamesStringArray.length;
     }
 
     // get the next name data
     public void nextName() {
-        first_name = FirstNamesStringArray[count%total_names];
-        second_name = SecondNamesStringArray[count%total_names];
+        first_name.setValue(FirstNamesStringArray[count%total_names]);
+        second_name.setValue(SecondNamesStringArray[count%total_names]);
         count++;          // increase the count value to get next name at next click
     }
 }
